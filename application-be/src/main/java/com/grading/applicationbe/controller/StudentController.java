@@ -1,12 +1,11 @@
 package com.grading.applicationbe.controller;
 
-import com.grading.applicationbe.model.Assignment;
+import com.grading.applicationbe.dto.AssignmentDto;
+import com.grading.applicationbe.dto.CourseAssignmentDto;
+import com.grading.applicationbe.mapper.AssignmentMapper;
 import com.grading.applicationbe.repository.AssignmentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.grading.applicationbe.repository.CourseRepository;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,13 +14,25 @@ import java.util.List;
 @CrossOrigin
 
 public class StudentController {
-    @Autowired
-    AssignmentRepository assignmentRepository;
+    private final AssignmentRepository assignmentRepository;
+    private final CourseRepository courseRepository;
+    private final AssignmentMapper assignmentMapper;
+
+    public StudentController(final AssignmentRepository assignmentRepository, final AssignmentMapper assignmentMapper, final CourseRepository courseRepository) {
+        this.assignmentRepository = assignmentRepository;
+        this.courseRepository = courseRepository;
+        this.assignmentMapper = assignmentMapper;
+    }
 
     //assignment
     //this return list of assignments
-    @GetMapping("/assignment")
-    public List<Assignment> viewAssignment() {
-        return assignmentRepository.findAll();
+    @GetMapping("/assignments")
+    public List<AssignmentDto> getAssignments() {
+        return assignmentMapper.toResponseDtoList(assignmentRepository.findAll());
     }
+//    @GetMapping("/assignments")
+//    public List<CourseAssignmentDto> getAssignments() {
+//        return assignmentMapper.toResponseDtoList(assignmentRepository.findAll(),courseRepository.findAll());
+//    }
+
 }
