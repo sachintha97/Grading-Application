@@ -20,10 +20,4 @@ public interface AssignmentMapper {
     AssignmentDto toResponseDto(Assignment assignment);
     List<AssignmentDto> toResponseDtoList(List<Assignment> assignments);
 
-//    @Mapping(source = "course.courseId", target = "courseId")
-//    @Mapping(source = "course.courseName", target = "courseName")
-//    @Mapping(source = "assignment.assignmentId", target = "assignmentId")
-//    @Mapping(source = "assignment.assignmentName", target = "assignmentName")
-//    List<CourseAssignmentDto> toResponseDtoList(List<Assignment> assignment, List<Course> course);
-
 }

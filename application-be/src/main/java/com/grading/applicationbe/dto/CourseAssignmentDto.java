@@ -11,7 +11,7 @@ public class CourseAssignmentDto {
     public CourseAssignmentDto() {
     }
 
-    public CourseAssignmentDto(int courseId, String courseName, int assignmentId, String assignmentName) {
+    public CourseAssignmentDto(int assignmentId, String assignmentName, String courseName, int courseId) {
         this.courseId = courseId;
         this.courseName = courseName;
         this.assignmentId = assignmentId;
