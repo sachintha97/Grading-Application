@@ -2,9 +2,17 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Assignment from "./Assignment";
 import { bindActionCreators } from "redux";
-import { List } from "@material-ui/core";
-import ListItem from "@material-ui/core/ListItem";
+import { makeStyles } from "@material-ui/core/styles";
 import { getAssignments } from "../actions/assignments";
+import { Typography } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  heading: {
+    textAlign: "center",
+    color: "#000066",
+    fontWeight: "bold",
+  },
+}));
 
 const AssignmentList = ({ assignments, getAssignments }) => {
   console.log(getAssignments);
@@ -12,18 +20,22 @@ const AssignmentList = ({ assignments, getAssignments }) => {
     getAssignments();
   }, []);
 
+  const classes = useStyles();
+
   return (
     <>
-      <h1>Assignment List:</h1>
-      <List>
+      <Typography variant="h3" className={classes.heading}>
+        Assignment List
+      </Typography>
+      <li>
         {assignments.map((assignment) => {
           return (
-            <ListItem key="{assignment.id}">
+            <ul key={`${assignment.assignmentId}`}>
               <Assignment {...assignment}></Assignment>
-            </ListItem>
+            </ul>
           );
         })}
-      </List>
+      </li>
     </>
   );
 };

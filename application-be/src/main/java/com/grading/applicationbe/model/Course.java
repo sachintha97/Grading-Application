@@ -12,8 +12,8 @@ public class Course {
 
     private String courseName;
 
-    @OneToMany(mappedBy="course")
-    private Set<Assignment> assignment;
+    @OneToMany(mappedBy="course",targetEntity = Assignment.class,cascade = CascadeType.ALL)
+    private Set<Assignment> assignments;
 
     // teacherId foreign key
     @ManyToOne
@@ -31,7 +31,7 @@ public class Course {
 
     public Course(String courseName, Set<Assignment> assignment, Teacher teacher, Set<Student> enrolls) {
         this.courseName = courseName;
-        this.assignment = assignment;
+        this.assignments = assignment;
         this.teacher = teacher;
         this.enrolls = enrolls;
     }
@@ -56,12 +56,12 @@ public class Course {
         this.courseName = courseName;
     }
 
-    public Set<Assignment> getAssignment() {
-        return assignment;
+    public Set<Assignment> getAssignments() {
+        return assignments;
     }
 
-    public void setAssignment(Set<Assignment> assignment) {
-        this.assignment = assignment;
+    public void setAssignments(Set<Assignment> assignments) {
+        this.assignments = assignments;
     }
 
     public Teacher getTeacher() {

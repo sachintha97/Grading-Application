@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "./components/NavBar";
 import Assignments from "./components/AssignmentList";
-import Review from "./components/Review";
+import Results from "./components/ResultList";
 import Home from "./components/Home";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import getAppStore from "./store/store";
@@ -18,7 +18,7 @@ function App() {
           <Switch>
             <Route component={Home} path="/" exact />
             <Route component={Assignments} path="/assignments" exact />
-            <Route component={Review} path="/assignments/:id" />
+            <Route component={Results} path="/results/1/:id" />
           </Switch>
         </BrowserRouter>
       </Provider>
