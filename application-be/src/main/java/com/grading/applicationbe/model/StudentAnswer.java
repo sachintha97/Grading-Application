@@ -10,13 +10,13 @@ public class StudentAnswer {
     private int answerId;
 
     // attemptId foreign key
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "attempt_id", referencedColumnName = "attemptId")
+    @ManyToOne
+    @JoinColumn(name="attempt_id", nullable=false)
     private Attempts attempts;
 
     // questionId foreign key
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "question_id", referencedColumnName = "QuestionId")
+    @ManyToOne
+    @JoinColumn(name="question_id", nullable=false)
     private Question question;
 
     private String studentAnswer;
@@ -31,7 +31,6 @@ public class StudentAnswer {
         this.question = question;
         this.studentAnswer = studentAnswer;
     }
-
 
     public int getAnswerId() {
         return answerId;
