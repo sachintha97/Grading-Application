@@ -83,7 +83,7 @@ export default function NavBar() {
             component={RouterLink}
             to="/assignments"
           >
-            Assignment
+            Assignments
           </Button>
         </Toolbar>
       </AppBar>

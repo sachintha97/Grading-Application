@@ -4,6 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "attempts")
@@ -33,22 +34,22 @@ public class Attempts {
     @JoinColumn(name="assignment_id", nullable=false)
     private Assignment assignment;
 
-    @OneToOne(mappedBy = "attempts")
-    private StudentAnswer studentAnswer;
+    @OneToMany(mappedBy="attempts")
+    private Set<StudentAnswer> studentAnswers;
 
     /**constructors and public getter and setter methods*/
 
     public Attempts() {
     }
 
-    public Attempts(double grade, Date attemptDateTime, Date startDateTime, Date endDateTime, Student student, Assignment assignment, StudentAnswer studentAnswer) {
+    public Attempts(double grade, Date attemptDateTime, Date startDateTime, Date endDateTime, Student student, Assignment assignment, Set<StudentAnswer> studentAnswers) {
         this.grade = grade;
         this.attemptDateTime = attemptDateTime;
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
         this.student = student;
         this.assignment = assignment;
-        this.studentAnswer = studentAnswer;
+        this.studentAnswers = studentAnswers;
     }
 
     public Student getStudent() {
@@ -107,11 +108,11 @@ public class Attempts {
         this.assignment = assignment;
     }
 
-    public StudentAnswer getStudentAnswer() {
-        return studentAnswer;
+    public Set<StudentAnswer> getStudentAnswers() {
+        return studentAnswers;
     }
 
-    public void setStudentAnswer(StudentAnswer studentAnswer) {
-        this.studentAnswer = studentAnswer;
+    public void setStudentAnswers(Set<StudentAnswer> studentAnswers) {
+        this.studentAnswers = studentAnswers;
     }
 }

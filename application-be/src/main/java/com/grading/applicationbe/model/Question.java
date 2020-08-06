@@ -1,6 +1,7 @@
 package com.grading.applicationbe.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "question")
@@ -18,19 +19,19 @@ public class Question {
     @JoinColumn(name="assignment_id", nullable=false)
     private Assignment assignment;
 
-    @OneToOne(mappedBy = "question")
-    private StudentAnswer studentAnswer;
+    @OneToMany(mappedBy="question")
+    private Set<StudentAnswer> studentAnswers;
 
     /**constructors and public getter and setter methods*/
 
     public Question() {
     }
 
-    public Question(String question, String correctAnswer, Assignment assignment, StudentAnswer studentAnswer) {
+    public Question(String question, String correctAnswer, Assignment assignment, Set<StudentAnswer> studentAnswers) {
         this.question = question;
         this.correctAnswer = correctAnswer;
         this.assignment = assignment;
-        this.studentAnswer = studentAnswer;
+        this.studentAnswers = studentAnswers;
     }
 
     public int getQuestionId() {
@@ -65,12 +66,11 @@ public class Question {
         this.assignment = assignment;
     }
 
-    public StudentAnswer getStudentAnswer() {
-        return studentAnswer;
+    public Set<StudentAnswer> getStudentAnswers() {
+        return studentAnswers;
     }
 
-    public void setStudentAnswer(StudentAnswer studentAnswer) {
-        this.studentAnswer = studentAnswer;
+    public void setStudentAnswers(Set<StudentAnswer> studentAnswers) {
+        this.studentAnswers = studentAnswers;
     }
-
 }
