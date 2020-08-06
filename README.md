@@ -13,12 +13,18 @@ Download the zip or clone the Git repository
 
 - Open application-be project using IntelliJ IDEA
 - Refresh all gradle projects (install dependecies)
-- run ApplicationBeApplication main java class (@SpringBootApplication class)
+- Run ApplicationBeApplication main java class (@SpringBootApplication class)
+
+OR 
+
+- Open Command Prompt and change directory to application-be folder
+- Gradle build using gradlew build -x test
+- Run : java -jar build/libs/application-be-0.0.1-SNAPSHOT.jar
 
 ### Frontend Running Steps
 - Open Command Prompt and change directory to grading-application-fe folder
 - Install dependencies using npm install
-- run : npm start
+- Run : npm start
 
 Create a database with name "grading_application_db" and add some dummy values,
 to deploy application in localhost
