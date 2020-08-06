@@ -18,13 +18,13 @@ Download the zip or clone the Git repository
 OR 
 
 - Open Command Prompt and change directory to application-be folder
-- Gradle build using gradlew build -x test
-- Run : java -jar build/libs/application-be-0.0.1-SNAPSHOT.jar
+- Gradle build using `gradlew build -x test`
+- Run : `java -jar build/libs/application-be-0.0.1-SNAPSHOT.jar`
 
 ### Frontend Running Steps
 - Open Command Prompt and change directory to grading-application-fe folder
-- Install dependencies using npm install
-- Run : npm start
+- Install dependencies using `npm install`
+- Run : `npm start`
 
-Create a database with name "grading_application_db" and add some dummy values,
+Create a database with name `grading_application_db` and add some dummy values,
 to deploy application in localhost
